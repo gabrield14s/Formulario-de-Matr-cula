@@ -5,6 +5,9 @@ let ano = document.getElementById("ano");
 let ddd = document.getElementById("ddd").value;
 let telefone = document.getElementById("telefone").value;
 
+let inputLimpaFormulario = document.getElementById("inputLimpaFormulario").value;
+let inputEnviaFormulario = document.getElementById("meuform");
+
 
 function validaDDD(){
     let  listaDeDDD = [
@@ -39,14 +42,17 @@ function validaDDD(){
 }   
 
 function validaTelefone(){
-    let confereCaracteres = /^\d{4}\d{4}$/;
-    if (!confereCaracteres.test()) return false;
+    telefone.split();
+
+    if (telefone.length != 9){
+        return false;
+    }
     return true;
 }
 
 function validaCheckBox(){
     let meuscheck = document.querySelectorAll("input[type=checkbox]:checked");
-    if (meuscheck.length > 3) return false;
+    if (meuscheck.length > 3)  return false;
     return true;
 }
 
@@ -54,10 +60,8 @@ function validaCheckBox(){
 function enviarFormulario(event){
     event.preventDefault();
 
-    // if (!validaTelefone()) return alert("Telefone inválido");
+    if (!validaTelefone()) return alert("Telefone inválido");
     if(!validaCheckBox()) return alert("Você só pode ter até 3 atividades");
 
-
     alert("Cadastro realizado!");
-
 }
